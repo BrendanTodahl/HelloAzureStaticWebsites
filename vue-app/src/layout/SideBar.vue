@@ -9,23 +9,55 @@
       </ul>
 
       <p>AUTH</p>
-      <ul>
-        <auth-link :provider="'Twitter'" />
-        <auth-link :provider="'GitHub'" />
-        <auth-link :provider="'AAD'" />
-        <auth-link :provider="'Google'" />
-        <auth-link :provider="'Facebook'" />
+      <ul v-if="!userInfo">
+        <template v-for="provider in providers">
+          <auth-login :key="provider" :provider="provider" />
+        </template>
       </ul>
+      <ul v-if="userInfo">
+        <auth-logout />
+      </ul>
+      <div class="user" v-if="userInfo">
+        <p>Welcome</p>
+        <p>{{ userInfo.userDetails }} - {{ userInfo.identityProvider }}</p>
+      </div>
     </nav>
   </div>
 </template>
 
 <script>
-import AuthLink from '../components/AuthLink'
+import AuthLogin from '../components/AuthLogin'
+import AuthLogout from '../components/AuthLogout'
 
 export default {
   components: {
-    AuthLink
+    AuthLogin,
+    AuthLogout
+  },
+  data() {
+    return {
+      userInfo: {
+        type: Object,
+        default() {},
+      },
+      providers: ['Twitter', 'GitHub', 'AAD', 'Google', 'Facebook']
+    }
+  },
+  async created() {
+    this.userInfo = await this.getUserInfo();
+  },
+  methods: {
+    async getUserInfo() {
+      try {
+        const response = await fetch('/.auth/me');
+        const payload = await response.json();
+        const { clientPrincipal } = payload;
+        return clientPrincipal;
+      } catch (error) {
+        console.error('No profile could be found');
+        return undefined;
+      }
+    },
   }
 }
 </script>
@@ -51,6 +83,19 @@ ul {
     background-color: #42b883;
     color: white;
     text-decoration: none;
+  }
+}
+
+.user {
+  font-size: 14px;
+  color: grey;
+
+  p {
+    margin: 0;
+
+    &:not(:first-of-type) {
+      margin-left: 0.5em;
+    }
   }
 }
 </style>

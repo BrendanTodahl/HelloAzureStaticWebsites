@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <app-header />
-    <div class="row mt-5">
-      <div class="col-2">
-        <side-bar />
-      </div>
-      <div class="col-10">
-        <router-view></router-view>
+    <div class="container-fluid">
+      <div class="row mt-5">
+        <div class="col-3">
+          <side-bar />
+        </div>
+        <div class="col-9">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
