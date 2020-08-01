@@ -9,11 +9,11 @@
       "statusCode": "404"
     },
     {
-      "route": "/secret",
+      "route": "/#/secret",
       "allowedRoles": ["authenticated"]
     },
     {
-      "route": "/super-secret",
+      "route": "/#/super-secret",
       "allowedRoles": ["preferred"]
     },
     {
