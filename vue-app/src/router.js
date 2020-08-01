@@ -7,8 +7,8 @@ import SuperSecret from './views/SuperSecret';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'hash',
-  linkExactActiveClass: 'active',
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
