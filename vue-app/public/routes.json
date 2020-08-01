@@ -10,7 +10,7 @@
     },
     {
       "route": "/api/super-secret",
-      "allowedRoles": ["preferred"]
+      "allowedRoles": ["reader"]
     },
     {
       "route": "/api/*",
