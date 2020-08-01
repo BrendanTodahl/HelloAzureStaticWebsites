@@ -1,5 +1,5 @@
 <template>
-  <div>Home</div>
+  <div>Welcome to my Azure Static Web Apps Demo!</div>
 </template>
 
 <script>
