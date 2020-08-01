@@ -1,0 +1,31 @@
+{
+  "routes": [
+    {
+      "route": "/.auth/login/facebook",
+      "statusCode": "404"
+    },
+    {
+      "route": "/.auth/login/aad",
+      "statusCode": "404"
+    },
+    {
+      "route": "/secret",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/super-secret",
+      "allowedRoles": ["preferred"]
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "platformErrorOverrides": [
+    {
+      "errorType": "NotFound",
+      "serve": "/404.html"
+    }
+  ]
+}
