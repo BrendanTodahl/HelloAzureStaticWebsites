@@ -3,7 +3,7 @@
     <nav class="navbar sticky-top navbar-dark bg-dark">
       <a class="navbar-brand" href="/">
         <img src="../assets/logo.png" class="mr-1" width="30" height="30" alt="Vue">
-        Azure Static Websites
+        Azure Static Web Apps
       </a>
     </nav>
   </header>
