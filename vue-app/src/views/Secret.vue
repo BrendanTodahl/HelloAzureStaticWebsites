@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Secret</h2>
     <div v-if="!errorMessage">
       {{ secret }}
     </div>

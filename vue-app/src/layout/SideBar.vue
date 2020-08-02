@@ -1,14 +1,14 @@
 <template>
   <div>
     <nav class="side-nav" role="navigation">
-      <p>MENU</p>
+      <p class="menu-header">MENU</p>
       <ul>
           <router-link to="/">Home</router-link>
           <router-link to="/secret">Secret</router-link>
           <router-link to="/super-secret">Super Secret</router-link>
       </ul>
 
-      <p>AUTH</p>
+      <p class="menu-header">AUTH</p>
       <ul v-if="!userInfo">
         <template v-for="provider in providers">
           <auth-login :key="provider" :provider="provider" />
@@ -65,6 +65,10 @@ export default {
 <style lang="scss">
 .side-nav {
   margin-left: 2em;
+}
+
+.menu-header {
+  color: #42b883;
 }
 
 ul {
